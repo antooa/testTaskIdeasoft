@@ -12,9 +12,9 @@ import (
 
 func main() {
 	addr := flag.String("addr", ":8080", "Server address")
+	cap := flag.Int("cap", 12000, "Max clients")
 	flag.Parse()
-	cmds := repository.StartRepositoryManager(12000)
-
+	cmds := repository.StartRepositoryManager(*cap)
 
 	srv := http.Server{
 		Addr:    *addr,
